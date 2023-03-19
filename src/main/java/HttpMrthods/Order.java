@@ -15,7 +15,7 @@ public class Order {
                 .and()
                 .body(ingredients)
                 .when()
-                .post("https://stellarburgers.nomoreparties.site/api/orders");
+                .post("/api/orders");
 
     }
 
@@ -26,7 +26,7 @@ public class Order {
                 .and()
                 .body(ingredients)
                 .when()
-                .post("https://stellarburgers.nomoreparties.site/api/orders");
+                .post("/api/orders");
 
     }
 
@@ -34,7 +34,7 @@ public class Order {
 
         return given()
                 .auth().oauth2(userToken)
-                .get("https://stellarburgers.nomoreparties.site/api/orders");
+                .get("/api/orders");
 
     }
 }

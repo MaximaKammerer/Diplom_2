@@ -10,10 +10,6 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class LoginUserTest {
 
-    String name = "Ganzalis";
-    String password = "123";
-    String email = "Ganzalis@yandex.ru";
-
     UserDetails userDetails;
     User user;
     Response response;
