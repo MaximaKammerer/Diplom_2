@@ -29,7 +29,7 @@ public class LoginUserTest {
 
     }
 
-   /* @After
+    @After
     @DisplayName("Удаляем тестового пользователя")
     public void clearUser () {
 
@@ -39,7 +39,7 @@ public class LoginUserTest {
         String accessToken = responseLogin.body().jsonPath().getString("accessToken");
         String[] userToken = accessToken.split(" ");
         user.deleteUser(userToken[1]);
-    }*/
+    }
 
     @Test
     @DisplayName("Позитивная проверка авторизации пользователя")
