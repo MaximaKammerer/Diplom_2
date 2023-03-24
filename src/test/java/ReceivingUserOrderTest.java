@@ -1,3 +1,4 @@
+import com.github.javafaker.Faker;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
@@ -25,7 +26,11 @@ public class ReceivingUserOrderTest {
     public void setup() {
 
         RestAssured.baseURI = BASE_URL;
-        userDetails = new UserDetails(NAME, PASSWORD, EMAIL);
+        Faker faker = new Faker();
+        String name = faker.name().firstName();
+        String password = name + "12345";
+        String email = name + "@yandex.ru";
+        userDetails = new UserDetails(name, password, email);
         user = new User();
         user.createUser(userDetails);
         Response responseLogin = user.authorizationUser(userDetails);

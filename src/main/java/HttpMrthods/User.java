@@ -1,13 +1,13 @@
 package HttpMrthods;
 
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import Model.UserDetails;
-import static Model.Constants.BASE_URL;
 
 import static io.restassured.RestAssured.given;
 
 public class User {
-
+    @Step("Создание пользователя")
     public Response createUser(UserDetails userDetails) {
 
         return given()
@@ -18,7 +18,7 @@ public class User {
                 .post("/api/auth/register");
 
     }
-
+    @Step("Создание заказа без авторизации")
     public Response authorizationUser(UserDetails userDetails) {
 
         return given()
@@ -29,7 +29,7 @@ public class User {
                 .post("/api/auth/login");
 
     }
-
+    @Step("Обновление пользователя")
     public Response updateUser(UserDetails userDetails, String userToken) {
 
         return given()
@@ -41,7 +41,7 @@ public class User {
                 .patch("/api/auth/user");
 
     }
-
+    @Step("Удаление пользователя")
     public Response deleteUser(String userToken) {
 
         return given()
