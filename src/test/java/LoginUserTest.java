@@ -29,7 +29,7 @@ public class LoginUserTest {
 
     }
 
-    @After
+   /* @After
     @DisplayName("Удаляем тестового пользователя")
     public void clearUser () {
 
@@ -39,8 +39,7 @@ public class LoginUserTest {
         String accessToken = responseLogin.body().jsonPath().getString("accessToken");
         String[] userToken = accessToken.split(" ");
         user.deleteUser(userToken[1]);
-
-    }
+    }*/
 
     @Test
     @DisplayName("Позитивная проверка авторизации пользователя")
@@ -57,9 +56,10 @@ public class LoginUserTest {
     @Test
     @DisplayName("Негативная проверка авторизации пользователя с не корректным паролем")
     public void authorizationUserBadPassword () {
-
-        userDetails.setPassword("1234");
-        response = user.authorizationUser(userDetails);
+        UserDetails userDetailsWithBadPass;
+        userDetailsWithBadPass = userDetails;
+        userDetailsWithBadPass.setPassword("werw");
+        response = user.authorizationUser(userDetailsWithBadPass);
         response.then()
                 .statusCode(401)
                 .and()
@@ -71,7 +71,7 @@ public class LoginUserTest {
     @DisplayName("Негативная проверка авторизации пользователя с не корректным email")
     public void authorizationUserBadEmail () {
 
-        userDetails.setEmail("Ganzalis@mail.ru");
+        userDetails.setEmail("Ganzalis132333332@mail.ru");
         response = user.authorizationUser(userDetails);
         response.then()
                 .statusCode(401)
